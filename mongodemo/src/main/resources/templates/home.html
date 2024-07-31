@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <style>
+        /* Custom CSS */
+        h1 {
+            text-align: center; /* Aligns the text of h1 to the center */
+            margin-top: 50px;
+        }
+        .btn{
+        text-align:center;
+         display: flex;
+         justify-content: center; 
+         margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{base :: header}"></div>
+
+
+ 
+   
+
+<section class="banner d-flex justify-content-center align-items-center">    </section>
+
+    <h1>Welcome to Student Registration System</h1>
+    
+    <div class="btn">
+  <a href="studRegester" class="btn btn-outline-success" role="button">Student Registration Form</a>
+  <a href="viewstud" class="btn btn-outline-success" role="button">View Student Data</a>
+  </div>
+</body>
+</html>

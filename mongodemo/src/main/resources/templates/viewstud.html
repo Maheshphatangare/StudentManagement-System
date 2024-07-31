@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com"  >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Student Data</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Custom styles for additional styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+          h2 {
+            text-align: center;
+             margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{base :: header}"></div>
+
+ <section>
+ 
+    <div class="container">
+        <h2>View Student Data</h2>
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>College</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Replace the data in the table rows with the actual student data -->
+                <tr th:each="s:${stud}">
+                    <td th:text="${s.id}"></td>
+                    <td th:text="${s.name}"></td>
+                    <td th:text="${s.city}"></td>
+                    <td th:text="${s.college}"></td>
+                    <td> <a style="color:blue" th:href="@{/editstud/{id}(id=${s.id})}"><i class="fa-solid fa-pen-to-square ms-4"></i></a>
+                   <a style="color:red"        th:href="@{/deletestud/{id}(id=${s.id})}"><i class="fa-solid fa-trash ms-4"></i></a>
+      </td>
+      
+      
+                </tr>
+                <!-- Add more rows for additional students as needed   th:href="@{/editstud/{id}(id=${stud.id})}"  th:href="@{/deletestud/{id}(id=${stud.id})}"  -->
+            </tbody>
+        </table>
+        <!-- Your existing HTML content -->
+<!--  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li th:if="${currentPage != 0}" th:class="${currentPage == 0 ? 'page-item disabled' : 'page-item'}">
+            <a class="page-link" th:href="@{'/viewstud?page=' + ${currentPage - 1}}">Previous</a>
+        </li>
+        <li class="page-item" th:each="pageItem: ${#numbers.sequence(0, totalPages - 1)}">
+            <a class="page-link" th:href="@{'/viewstud?page=' + ${pageItem}}" th:text="${pageItem + 1}" th:class="${currentPage == pageItem ? 'active' : ''}"></a>
+        </li>
+        <li class="page-item" th:if="${currentPage + 1 < totalPages}">
+            <a class="page-link" th:href="@{'/viewstud?page=' + ${currentPage + 1}}">Next</a>
+        </li>
+    </ul>
+</nav>-->
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li th:if="${currentPage > 0}" class="page-item">
+            <a class="page-link" th:href="@{'/viewstud/' + ${currentPage - 1}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li th:each="pageItem : ${#numbers.sequence(0, totalPages - 1)}" class="page-item">
+            <a class="page-link" th:href="@{'/viewstud/' + ${pageItem}}" th:text="${pageItem + 1}" th:class="${currentPage == pageItem ? 'active' : ''}"></a>
+        </li>
+        <li th:if="${currentPage + 1 < totalPages}" class="page-item">
+            <a class="page-link" th:href="@{'/viewstud/' + ${currentPage + 1}}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Your existing table content -->
+
+
+
+    </div>
+   </section>
+</body>
+</html>

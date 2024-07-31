@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com"> <!-- th:replace="~{base::Layout(~{::section})}" --> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"], input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+          h2 {
+            text-align: center;
+             margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{base :: header}"></div>
+
+<section class="banner d-flex justify-content-center align-items-center"> 
+
+ </section>
+    <h2>Student Registration Form</h2>
+    <form action="#" th:action="@{/save}" method="post" id="studentForm" class="container">
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="number" id="id" name="id" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="college">College:</label>
+            <input type="text" id="college" name="college" required class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+   
+</body>
+</html>
